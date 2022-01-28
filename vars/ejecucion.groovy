@@ -37,7 +37,7 @@ def call(){
 							println 'Ejecutar Maven'
 							//def ejecucion = load 'maven.groovy'
 							//ejecucion.call()
-							gradle()
+							maven()
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					
