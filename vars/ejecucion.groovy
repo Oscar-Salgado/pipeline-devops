@@ -30,12 +30,14 @@ def call(){
 						
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
-								def ejecucion = load 'gradle.groovy'
-								ejecucion.call()
+								//def ejecucion = load 'gradle.groovy'
+								//ejecucion.call()
+								gradle()
 						} else {
 							println 'Ejecutar Maven'
-							def ejecucion = load 'maven.groovy'
-							ejecucion.call()
+							//def ejecucion = load 'maven.groovy'
+							//ejecucion.call()
+							gradle()
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					
