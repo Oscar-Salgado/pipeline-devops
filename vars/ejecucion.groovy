@@ -11,7 +11,7 @@ def call(){
 	
 	environment {
 	    STAGE = ''
-		ETAPA = params.etapa
+		ETAPA = ''
 	}
 	
 	parameters {
@@ -32,6 +32,7 @@ def call(){
 								println 'Ejecutar Gradle'
 								if (params.etapa==""){
 									println 'Se ejecutarán todas las etapas: '
+									ETAPA = "${params.etapa}"
 									gradle()
 								}
 								else {
