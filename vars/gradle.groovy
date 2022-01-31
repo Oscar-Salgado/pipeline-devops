@@ -13,9 +13,9 @@ def call(){
 			//figlet ETAPA
         }
         stage('Sonar') {
+			figlet 'Todas las Etapas'
             STAGE = env.STAGE_NAME
 			println "Stage: ${env.STAGE_NAME}"
-			figlet 'Todas las Etapas'
 			def scannerHome = tool 'sonar-scanner';
 			withSonarQubeEnv('sonarqube-server') { 
 			bat "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=Sonarqube-jenkins -Dsonar.projectBaseDir=c:/repo/ejemplo-gradle/ -Dsonar.sources=src -Dsonar.java.binaries=build" 

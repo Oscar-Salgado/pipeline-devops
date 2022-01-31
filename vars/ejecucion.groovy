@@ -16,7 +16,7 @@ def call(){
 	
 	parameters {
 	choice choices: ['gradle', 'maven'], description: 'indicar herramienta de construccion', name: 'buildTool'
-	string description: 'Ingresar nombre de stage a ejecutar, sí deja el input vacío se ejecutarán todos los stage.', name: 'etapa'
+	string description: 'Ingresar nombre de stage a ejecutar, sí deja el input vacío se ejecutarán todos los stage.', name: 'stage'
 	}
 
     stages {
@@ -30,25 +30,25 @@ def call(){
 						
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
-								if (params.etapa==""){
+								if (params.stage==""){
 									println 'Se ejecutarán todas las etapas: '
-									ETAPA = "${params.etapa}"
+									ETAPA = "${params.stage}"
 									gradle()
 								}
 								else {
 									println 'Se ejecutarán las siguientes etapas: '
-									figlet params.etapa
+									figlet params.stage
 									gradle()
 								}
 						} else {
 								println 'Ejecutar Maven'
-								if (params.etapa==""){
+								if (params.stage==""){
 									println 'Se ejecutarán todas las etapas: '
 									maven()
 								}
 								else {
 									println 'Se ejecutarán las siguientes etapas: '
-									figlet params.etapa
+									figlet params.stage
 									maven()
 								}
 						}
