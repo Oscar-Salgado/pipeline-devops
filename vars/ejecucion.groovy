@@ -34,7 +34,7 @@ def call(){
 								//def ejecucion = load 'gradle.groovy'
 								//ejecucion.call()
 								figlet params.etapa
-								gradle(params.etapa)
+								gradle(etapa)
 						} else {
 							println 'Ejecutar Maven'
 							//def ejecucion = load 'maven.groovy'
