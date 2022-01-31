@@ -15,7 +15,7 @@ def call(){
 	
 	parameters {
 	choice choices: ['gradle', 'maven'], description: 'indicar herramienta de construccion', name: 'buildTool'
-	string description: 'Ingresar nombre de stage a ejecutar, sí deja el input vacío se ejecutarán todos los stage.', name: 'stage'
+	string description: 'Ingresar nombre de stage a ejecutar, sí deja el input vacío se ejecutarán todos los stage.', name: 'etapa'
 	}
 
     stages {
@@ -33,13 +33,13 @@ def call(){
 								println 'Ejecutar Gradle'
 								//def ejecucion = load 'gradle.groovy'
 								//ejecucion.call()
-								figlet params.stage
-								gradle(params.stage)
+								figlet params.etapa
+								gradle(params.etapa)
 						} else {
 							println 'Ejecutar Maven'
 							//def ejecucion = load 'maven.groovy'
 							//ejecucion.call()
-							maven(params.stage)
+							maven(params.etapa)
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					

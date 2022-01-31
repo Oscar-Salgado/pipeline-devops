@@ -10,6 +10,7 @@ def call(string etapa){
             STAGE = env.STAGE_NAME
 			println "Stage: ${env.STAGE_NAME}"
 			bat './gradlew clean build'    
+			figlet ${etapa}
 			figlet etapa
         }
         stage('Sonar') {
