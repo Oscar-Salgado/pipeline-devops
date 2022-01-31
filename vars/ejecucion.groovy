@@ -27,19 +27,19 @@ def call(){
 						println 'Pipeline'
 						
 						println params.buildTool
+						ETAPA = "${params.stage}"
 						
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
 								if (params.stage==""){
 									println 'Se ejecutarán todas las etapas: '
 									figlet 'Todas las Etapas'
-									ETAPA = "${params.stage}"
 									gradle()
 								}
 								else {
 									println 'Se ejecutarán las siguientes etapas: '
 									figlet 'Etapas'
-									figlet params.stage
+									figlet ETAPA
 									gradle()
 								}
 						} else {
