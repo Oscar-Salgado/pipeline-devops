@@ -6,18 +6,18 @@
 
 def call(String ETAPA){
   
-        stage('Build') {
-			//Build & Unit Test
-			if(env.STAGE_NAME==ETAPA){
-				figlet ETAPA
-				STAGE = env.STAGE_NAME
-				println "Stage: ${env.STAGE_NAME}"
-				bat './gradlew clean build'    
+		if(ETAPA=='build'){
+			stage('build') {
+					//Build & Unit Test
+					figlet ETAPA
+					STAGE = env.STAGE_NAME
+					println "Stage: ${env.STAGE_NAME}"
+					bat './gradlew clean build'    
 			}
-			else{
-				println "Skip Etapa ${env.STAGE_NAME}"
-			}
-        }
+		}			
+		else{
+			println "Skip Etapa ${env.STAGE_NAME}"
+		}
         stage('Sonar') {
             STAGE = env.STAGE_NAME
 			println "Stage: ${env.STAGE_NAME}"
