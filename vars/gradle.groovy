@@ -6,7 +6,7 @@
 
 def call(String ETAPA){
 	
-	if(ETAPA =""){
+	if(ETAPA==""){
 		//se ejecutan todas las stages
 		figlet 'Todas las Etapas'
 			stage('build') {
