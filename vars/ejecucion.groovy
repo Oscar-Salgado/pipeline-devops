@@ -32,11 +32,13 @@ def call(){
 								println 'Ejecutar Gradle'
 								if (params.stage==""){
 									println 'Se ejecutarán todas las etapas: '
+									figlet 'Todas las Etapas'
 									ETAPA = "${params.stage}"
 									gradle()
 								}
 								else {
 									println 'Se ejecutarán las siguientes etapas: '
+									figlet 'Etapas'
 									figlet params.stage
 									gradle()
 								}

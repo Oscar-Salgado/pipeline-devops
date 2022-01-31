@@ -13,7 +13,6 @@ def call(){
 			//figlet ETAPA
         }
         stage('Sonar') {
-			figlet 'Todas las Etapas'
             STAGE = env.STAGE_NAME
 			println "Stage: ${env.STAGE_NAME}"
 			def scannerHome = tool 'sonar-scanner';
