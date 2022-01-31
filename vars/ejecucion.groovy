@@ -34,12 +34,12 @@ def call(){
 								//def ejecucion = load 'gradle.groovy'
 								//ejecucion.call()
 								figlet params.stage
-								gradle()
+								gradle(params.stage)
 						} else {
 							println 'Ejecutar Maven'
 							//def ejecucion = load 'maven.groovy'
 							//ejecucion.call()
-							maven()
+							maven(params.stage)
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					

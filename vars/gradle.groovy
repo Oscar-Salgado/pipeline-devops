@@ -4,12 +4,13 @@
 	ejecucion.call()
 */
 
-def call(){
+def call(string etapa){
   
         stage('Build & Unit Test') {
             STAGE = env.STAGE_NAME
 			println "Stage: ${env.STAGE_NAME}"
-			bat './gradlew clean build'                      
+			bat './gradlew clean build'    
+			figlet etapa
         }
         stage('Sonar') {
             STAGE = env.STAGE_NAME
