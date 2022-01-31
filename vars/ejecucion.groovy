@@ -11,6 +11,7 @@ def call(){
 	
 	environment {
 	    STAGE = ''
+		ETAPAS = ''
 	}
 	
 	parameters {
@@ -26,19 +27,19 @@ def call(){
 						println 'Pipeline'
 						
 						println params.buildTool
-						//echo "$env.BUILD_USER" 
-						//echo "$env.BUILD_USER_ID" 
 						
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
-								//def ejecucion = load 'gradle.groovy'
-								//ejecucion.call()
-								figlet params.etapa
-								gradle(etapa)
+								if (params.etapa==""){
+									println 'Se ejecutarán todas las etapas: '
+								}
+								else {
+									println 'Se ejecutarán las siguientes etapas: '
+									figlet params.etapa
+									gradle(etapa)
+								}
 						} else {
 							println 'Ejecutar Maven'
-							//def ejecucion = load 'maven.groovy'
-							//ejecucion.call()
 							maven(params.etapa)
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
