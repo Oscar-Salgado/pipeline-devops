@@ -31,26 +31,10 @@ def call(){
 						
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
-								if (params.stage==""){
-									println "Se ejecutarán todas las etapas: "
-									figlet 'Todas las Etapas'
-									gradle(ETAPA)
-								}
-								else {
-									println 'Se ejecutarán las siguientes etapas: '
-									gradle(ETAPA)
-								}
+								gradle(ETAPA)
 						} else {
 								println 'Ejecutar Maven'
-								if (params.stage==""){
-									println 'Se ejecutarán todas las etapas: '
-									maven(ETAPA)
-								}
-								else {
-									println 'Se ejecutarán las siguientes etapas: '
-									figlet params.stage
-									maven(ETAPA)
-								}
+								maven(ETAPA)
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					
