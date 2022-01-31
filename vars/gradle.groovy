@@ -15,9 +15,6 @@ def call(String ETAPA){
 					bat './gradlew clean build'    
 			}
 		}			
-		else{
-			println "Skip Etapa: build"
-		}
 		
 		if(ETAPA=='sonar'){
 			stage('sonar') {
@@ -30,9 +27,6 @@ def call(String ETAPA){
 				}                    
 			}
 		}			
-		else{
-			println "Skip Etapa: sonar"
-		}
 		
 		if(ETAPA=='run'){
 			stage('run') {
@@ -45,9 +39,6 @@ def call(String ETAPA){
 				sleep 20
 			}
 		}			
-		else{
-			println "Skip Etapa: run"
-		}
 		
 		if(ETAPA=='testing'){
 			stage('testing') {
@@ -57,9 +48,6 @@ def call(String ETAPA){
 				//bat "curl -X GET 'http://localhost:8081/rest/mscovid/test?msg=testing"
 			}
 		}			
-		else{
-			println "Skip Etapa: testing"
-		}
 		
 		if(ETAPA=='nexus'){
 			stage('nexus') {
@@ -69,9 +57,6 @@ def call(String ETAPA){
 				println "Stage: ${env.STAGE_NAME}"                      
 			}
 		}			
-		else{
-			println "Skip Etapa: nexus"
-		}
 
 }
 
