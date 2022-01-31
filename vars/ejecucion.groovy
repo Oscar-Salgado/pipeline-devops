@@ -40,7 +40,7 @@ def call(){
 									println 'Se ejecutarán las siguientes etapas: '
 									figlet 'Etapas'
 									figlet ETAPA
-									gradle()
+									gradle(ETAPA)
 								}
 						} else {
 								println 'Ejecutar Maven'
