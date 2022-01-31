@@ -15,6 +15,7 @@ def call(){
 	
 	parameters {
 	choice choices: ['gradle', 'maven'], description: 'indicar herramienta de construccion', name: 'buildTool'
+	string description: 'Ingresar nombre de stage a ejecutar, sí deja el input vacío se ejecutarán todos los stage.', name: 'stage'
 	}
 
     stages {
