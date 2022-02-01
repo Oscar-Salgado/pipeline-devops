@@ -4,7 +4,9 @@
 	ejecucion.call()
 */
 
-def call(){
+def call(String pipelineType){
+
+		figlet pipelineType
   
         stage('Compile') {
              bat "./mvnw.cmd clean compile -e"

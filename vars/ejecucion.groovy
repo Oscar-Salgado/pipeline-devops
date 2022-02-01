@@ -24,20 +24,15 @@ def call(){
 				    try {
 						println 'Pipeline'
 						
-						println params.buildTool
-						//echo "$env.BUILD_USER" 
-						//echo "$env.BUILD_USER_ID" 
 						
+						//def ci_or_cd = verifyBranchName()
+					
 						if (params.buildTool=="gradle") {
 								println 'Ejecutar Gradle'
-								//def ejecucion = load 'gradle.groovy'
-								//ejecucion.call()
-								gradle()
+								gradle(verifyBranchName())
 						} else {
 							println 'Ejecutar Maven'
-							//def ejecucion = load 'maven.groovy'
-							//ejecucion.call()
-							maven()
+							maven(verifyBranchName())
 						}
 						slackSend color: 'good', message: "Información de Ejecución: \n [${env.BUILD_USER}][${env.JOB_NAME}][${params.buildTool}] Ejecución Exitosa!"
 					
@@ -53,4 +48,24 @@ def call(){
 
 }
 
+def verifyBranchName(){
+	if (env.GIT_BRANCH.contains('feature-') || env.GIT_BRANCH.contains('develop')){
+		return 'CI'
+		
+	} else {
+		return 'CD'
+	}
+}
 return this;
+
+
+
+
+
+
+
+
+
+
+
+
